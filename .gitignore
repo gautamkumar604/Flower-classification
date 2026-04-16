@@ -30,10 +30,10 @@ env/
 # =========================
 # Model Files (Large)
 # =========================
-*.h5
+# *.h5
 *.keras
 *.pb
-model/
+# model/
 
 # =========================
 # Dataset (Very Large)
