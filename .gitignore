@@ -10,7 +10,7 @@ QUICK_REFERENCE.md
 SETUP_GUIDE.md
 START_HERE.md
 ./dataset
-../package-lock.json
+../package-lock.json 
 
 # =========================
 # Python
