@@ -1,0 +1,105 @@
+node_modules
+# *.md
+ARCHITECTURE.md
+ATTRIBUTIONS.md
+DEPLOYMENT.md
+FAQ.md
+PROJECT_OVERVIEW.md
+PROJECT_STRUCTURE.md
+QUICK_REFERENCE.md
+SETUP_GUIDE.md
+START_HERE.md
+./dataset
+../package-lock.json
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# =========================
+# Model Files (Large)
+# =========================
+*.h5
+*.keras
+*.pb
+model/
+
+# =========================
+# Dataset (Very Large)
+# =========================
+dataset/
+*.zip
+*.tar
+*.gz
+
+# =========================
+# Environment Variables
+# =========================
+.env
+
+# =========================
+# Node / React
+# =========================
+node_modules/
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+
+# =========================
+# Testing / Coverage
+# =========================
+coverage/
+
+package-lock.json
+
+node_modules
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
