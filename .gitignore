@@ -49,10 +49,14 @@ dataset/
 .env
 
 # =========================
+# Deployment Configs
+# =========================
+render.yaml
+
+# =========================
 # Node / React
 # =========================
 node_modules/
-dist/
 build/
 
 # Logs
