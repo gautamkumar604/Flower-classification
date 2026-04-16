@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: flower-classification-api
-    runtime: python3
+    name: flower-classification
+    env: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
