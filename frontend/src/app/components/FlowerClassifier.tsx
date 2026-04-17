@@ -55,8 +55,8 @@ export function FlowerClassifier() {
 
       // Dynamically construct API URL based on current host
       // Hey...
-      // const apiUrl = `http://localhost:5000/predict`;
-      const apiUrl = `https://flower-classification-vc7c.onrender.com/predict`;
+      const apiUrl = `http://${window.location.hostname}:5000/predict`;
+      // const apiUrl = `https://flower-classification-vc7c.onrender.com/predict`;
       console.log(`${window.location}`)
 
       const response = await fetch(apiUrl, {
@@ -72,7 +72,7 @@ export function FlowerClassifier() {
       const result: PredictionResult = await response.json();
       setPrediction(result);
     } catch (err) {
-      const apiUrl = `http://${window.location.hostname}:5000`;
+      const apiUrl = `http://${window.location.hostname}:5000/predict`;
       setError(err instanceof Error ? err.message : `Failed to connect to server. Make sure the Flask backend is running on ${apiUrl}`);
     } finally {
       setLoading(false);
