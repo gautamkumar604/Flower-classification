@@ -54,6 +54,7 @@ export function FlowerClassifier() {
       formData.append('file', selectedFile);
 
       // Dynamically construct API URL based on current host
+      // Hey...
       // const apiUrl = `http://localhost:5000/predict`;
       const apiUrl = `https://flower-classification-vc7c.onrender.com/predict`;
       console.log(`${window.location}`)
