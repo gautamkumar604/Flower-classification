@@ -52,7 +52,7 @@ def load_flower_model():
 
     try:
         print(f"Loading model from: {MODEL_PATH}")
-        model = load_model(MODEL_PATH)
+        model = load_model(MODEL_PATH, compile=False)
         print("✓ Model loaded successfully!")
 
         print(f"Loading class names from: {CLASS_NAMES_PATH}")
