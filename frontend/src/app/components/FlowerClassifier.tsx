@@ -53,7 +53,10 @@ export function FlowerClassifier() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch('http://localhost:5000/predict', {
+      // Dynamically construct API URL based on current host
+      const apiUrl = `http://${window.location.hostname}:5000/predict`;
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
       });
@@ -66,7 +69,8 @@ export function FlowerClassifier() {
       const result: PredictionResult = await response.json();
       setPrediction(result);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to connect to server. Make sure the Flask backend is running on http://localhost:5000');
+      const apiUrl = `http://${window.location.hostname}:5000`;
+      setError(err instanceof Error ? err.message : `Failed to connect to server. Make sure the Flask backend is running on ${apiUrl}`);
     } finally {
       setLoading(false);
     }
