@@ -89,7 +89,7 @@ export function FlowerClassifier() {
   const getFlowerEmoji = (flowerClass: string) => {
     const emojis: Record<string, string> = {
       daisy: '🌼',
-      dandelion: '🌻',
+      dandelion: '🌼',
       rose: '🌹',
       sunflower: '🌻',
       tulip: '🌷',
