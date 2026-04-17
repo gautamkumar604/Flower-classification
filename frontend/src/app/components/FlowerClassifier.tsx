@@ -56,30 +56,39 @@ export function FlowerClassifier() {
       // Dynamically construct API URL based on current host
       // Hey...
       // const apiUrl = `http://${window.location.hostname}:5000/predict`;
-      const apiUrl = `https://${window.location.hostname}/predict`;
-      console.log(`${window.location}`)
-
+      // const apiUrl = `https://${window.location.hostname}/predict`;
+      const apiUrl = import.meta.env.VITE_API_URL + "/predict";
       const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Prediction failed');
+        let errorMessage = "Prediction failed";
+
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          // handles cases where server returns HTML (like 503 page)
+        }
+
+        throw new Error(errorMessage);
       }
 
-      const result: PredictionResult = await response.json();
+      const result = await response.json();
       setPrediction(result);
     } catch (err) {
       // const apiUrl = `http://${window.location.hostname}:5000/predict`;
-      const apiUrl = `https://${window.location.hostname}/predict`;
+      // const apiUrl = `https://${window.location.hostname}/predict`;
+      const apiUrl = import.meta.env.VITE_API_URL + "/predict";
       setError(err instanceof Error ? err.message : `Failed to connect to server. Make sure the Flask backend is running on ${apiUrl}`);
     } finally {
       setLoading(false);
     }
   };
-
+  console.log(import.meta.env);
+  console.log(import.meta.env.VITE_API_URL);
   const handleReset = () => {
     setSelectedFile(null);
     setPreviewUrl('');
