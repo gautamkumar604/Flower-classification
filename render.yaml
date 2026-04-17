@@ -1,11 +1,24 @@
+# services:
+#   - type: web
+#     name: flower-classification-api
+#     env: python
+#     pythonVersion: 3.10
+#     rootDir: backend
+#     buildCommand: bash -lc "cd backend && pip install -r requirements.txt"
+#     startCommand: bash -lc "cd backend && gunicorn app:app"
+#     envVars:
+#       - key: FLASK_ENV
+#         value: production
+
 services:
   - type: web
     name: flower-classification-api
-    env: python
-    pythonVersion: 3.10
+    runtime: python
     rootDir: backend
-    buildCommand: bash -lc "cd backend && pip install -r requirements.txt"
-    startCommand: bash -lc "cd backend && gunicorn app:app"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
       - key: FLASK_ENV
         value: production
