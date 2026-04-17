@@ -55,6 +55,7 @@ export function FlowerClassifier() {
 
       // Dynamically construct API URL based on current host
       const apiUrl = `http://${window.location.hostname}:5000/predict`;
+      console.log(`${window.location.hostname} - ${apiUrl}`);
 
       const response = await fetch(apiUrl, {
         method: 'POST',
