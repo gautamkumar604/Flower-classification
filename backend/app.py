@@ -26,8 +26,8 @@ IMG_SIZE = (224, 224)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'flower_model.h5')
 CLASS_NAMES_PATH = os.path.join(BASE_DIR, 'model', 'class_names.json')
-FRONTEND_DIST_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'frontend', 'dist'))
-FRONTEND_SRC_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'frontend'))
+FRONTEND_DIST_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'dist'))
+FRONTEND_SRC_DIR = os.path.abspath(os.path.join(BASE_DIR, '..'))
 FRONTEND_DIR = FRONTEND_DIST_DIR if os.path.isdir(FRONTEND_DIST_DIR) else FRONTEND_SRC_DIR
 
 # Global model and class names
