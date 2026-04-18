@@ -205,7 +205,7 @@ export function FlowerClassifier() {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full">
                 <span className="text-sm text-gray-600">Confidence:</span>
                 <span className="text-lg font-bold text-purple-600">
-                  prediction.confidence.toFixed(2)%
+                  {prediction.confidence.toFixed(2)}%
                 </span>
               </div>
             </div>
