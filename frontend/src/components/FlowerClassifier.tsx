@@ -53,11 +53,8 @@ export function FlowerClassifier() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      // Dynamically construct API URL based on current host
-      // Hey...
-      // const apiUrl = `http://${window.location.hostname}:5000/predict`;
-      // const apiUrl = `https://${window.location.hostname}/predict`;
       const apiUrl = import.meta.env.VITE_API_URL + "/predict";
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
@@ -70,7 +67,7 @@ export function FlowerClassifier() {
           const errorData = await response.json();
           errorMessage = errorData.error || errorMessage;
         } catch {
-          // handles cases where server returns HTML (like 503 page)
+          errorMessage = `Server error (${response.status})`;
         }
 
         throw new Error(errorMessage);
@@ -78,17 +75,17 @@ export function FlowerClassifier() {
 
       const result = await response.json();
       setPrediction(result);
+
     } catch (err) {
-      // const apiUrl = `http://${window.location.hostname}:5000/predict`;
-      // const apiUrl = `https://${window.location.hostname}/predict`;
-      const apiUrl = import.meta.env.VITE_API_URL + "/predict";
-      setError(err instanceof Error ? err.message : `Failed to connect to server. Make sure the Flask backend is running on ${apiUrl}`);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to connect to backend server"
+      );
     } finally {
       setLoading(false);
     }
   };
-  console.log(import.meta.env);
-  console.log(import.meta.env.VITE_API_URL);
   const handleReset = () => {
     setSelectedFile(null);
     setPreviewUrl('');
@@ -102,7 +99,7 @@ export function FlowerClassifier() {
   const getFlowerEmoji = (flowerClass: string) => {
     const emojis: Record<string, string> = {
       daisy: '🌼',
-      dandelion: '🌼',
+      dandelion: '🌻',
       rose: '🌹',
       sunflower: '🌻',
       tulip: '🌷',
@@ -208,7 +205,7 @@ export function FlowerClassifier() {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full">
                 <span className="text-sm text-gray-600">Confidence:</span>
                 <span className="text-lg font-bold text-purple-600">
-                  {(prediction.confidence * 100).toFixed(2)}%
+                  prediction.confidence.toFixed(2)%
                 </span>
               </div>
             </div>
@@ -218,7 +215,7 @@ export function FlowerClassifier() {
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full transition-all duration-500"
-                  style={{ width: `${prediction.confidence * 100}%` }}
+                  style={{ width: `${prediction.confidence}%` }}
                 />
               </div>
             </div>

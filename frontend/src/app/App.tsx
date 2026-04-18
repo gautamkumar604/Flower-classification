@@ -1,4 +1,4 @@
-import { FlowerClassifier } from './components/FlowerClassifier';
+import { FlowerClassifier } from '../components/FlowerClassifier';
 
 export default function App() {
   return (

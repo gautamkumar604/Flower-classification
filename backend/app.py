@@ -36,34 +36,29 @@ class_names = None
 
 
 def load_flower_model():
-    """Load the trained flower classification model and class names."""
     global model, class_names
 
-    model = None
-    class_names = None
-
-    if not os.path.exists(MODEL_PATH):
-        print(f"⚠️  Model file not found: {MODEL_PATH}")
-        return
-
-    if not os.path.exists(CLASS_NAMES_PATH):
-        print(f"⚠️  Class names file not found: {CLASS_NAMES_PATH}")
-        return
-
     try:
-        print(f"Loading model from: {MODEL_PATH}")
-        model = load_model(MODEL_PATH, compile=False)
-        print("✓ Model loaded successfully!")
+        print("🔄 Loading model...")
 
-        print(f"Loading class names from: {CLASS_NAMES_PATH}")
-        with open(CLASS_NAMES_PATH, 'r', encoding='utf-8') as f:
+        model_path = MODEL_PATH
+        class_path = CLASS_NAMES_PATH
+
+        print(f"Model path: {model_path}")
+        print(f"Class names path: {class_path}")
+
+        model = load_model(model_path)
+
+        with open(class_path, 'r') as f:
             class_names = json.load(f)
-        print(f"✓ Class names loaded: {class_names}")
-    except Exception as exc:
-        print(f"❌ Error loading model or class names: {exc}")
+
+        print("✅ Model loaded successfully")
+        print("✅ Class names loaded successfully")
+
+    except Exception as e:
+        print(f"❌ Model loading failed: {e}")
         model = None
         class_names = None
-
 
 def allowed_file(filename):
     """Validate allowed image file extensions."""
@@ -168,6 +163,10 @@ def handle_404(error):
     return send_from_directory(FRONTEND_DIR, 'index.html')
 
 
+# app = Flask(__name__)
+
+load_flower_model()
+
 if __name__ == '__main__':
-    load_flower_model()
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
