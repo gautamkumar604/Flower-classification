@@ -30,8 +30,10 @@ A full-stack AI application that identifies flower types from uploaded images us
 flower-classification-app/
 ├── backend/                    # Flask API server
 │   ├── app.py                 # Main Flask application
-│   ├── requirements.txt       # Python dependencies
-│   └── flower_model.h5        # Trained model (generated after training)
+│   └── requirements.txt       # Python dependencies
+├── model
+│   ├── flower_model.h5        # Trained model (generated after training). You may download pre-trained model at: https://drive.google.com/file/d/1-_Gt-EwNMm--jTtBPj6CyOsEvEcdyh7M/view?usp=drive_link
+│   └── class_names.json
 │
 ├── training/                   # Model training scripts
 │   ├── train_model.py         # Training script
